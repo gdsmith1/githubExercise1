@@ -31,7 +31,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - id: step1
-        run: echo "This is a test string." >> "$GITHUB_OUTPUT"
+        run: echo "pw=This is a test string." >> "$GITHUB_OUTPUT"
   
 
   print:
