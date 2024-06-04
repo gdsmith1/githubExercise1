@@ -17,16 +17,18 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      pw: ${{ steps.Run_a_one-line_script.outputs.pw }}
+      pw: ${{ steps.step1.outputs.pw }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Run a one-line script
+        id: step1
         run: echo ${{ secrets.SUPER_SECRET_PASSWORD }} >> "$GITHUB_OUTPUT"
 
   matrix:
     runs-on: ubuntu-latest
+    needs: simple
     steps:
       - env:
-          pw: ${{ steps.Run_a_one-line_script.outputs.pw }}
+          pw: ${{ needs.simple.outputs.pw }}
         run: echo $pw >> "$GITHUB_OUTPUT"
