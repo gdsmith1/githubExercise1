@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      pw: ${{ steps.step1.outputs.pw }}
+      test: ${{ steps.step1.outputs.pw }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -39,5 +39,5 @@ jobs:
     needs: variable
     steps:
       - env:
-          pw: ${{ needs.simple.outputs.pw }}
-        run: echo $pw >> "$GITHUB_OUTPUT"
+          var: ${{ needs.simple.outputs.test }}
+        run: echo "$var"
